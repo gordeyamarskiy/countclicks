@@ -7,7 +7,7 @@ vk_token = os.environ["VK_TOKEN"]
 
 def shorten_link(token, long_link):    
 
-    url = os.environ["URL"]
+    url = "https://api.vk.ru/method/utils.getShortLink"
 
     headers = {"Authorization": f"Bearer {vk_token}"}
     params = {"v": 5.199, "url": long_link}
@@ -31,7 +31,7 @@ def count_clics(token, short_link):
     response.raise_for_status()
     statistic = response.json()["response"]["stats"]
     if statistic:
-        count = response.json()["response"]["stats"][0]["views"] or 0
+        count = response.json()["response"]["stats"][0]["views"]
     return count
 
 
